@@ -21,7 +21,7 @@ const Homepage = () => {
       );
       const data = await response.json();
       setRecipes(data); //recipes data is stored as a state
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error.message);
     } finally {

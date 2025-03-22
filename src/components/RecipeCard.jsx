@@ -1,8 +1,29 @@
 import React, { Component } from 'react'
+import { useState } from 'react';
 import {  Soup, ThumbsUp, Heart, HeartPulse} from "lucide-react";
 
 const  RecipeCard = ({recipe}) => {
   const { id, image, title, likes } = recipe;
+  const [isFavorite, setIsFavorite] = useState(localStorage.getItem('favorites')?.includes(recipe.title));
+
+  const addRecipeToFavorited = () => {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    //check it recipe is already in favorites
+    const isRecipeInFavorites = favorites.some((fav) => fav.title === recipe.title);
+
+    if(isRecipeInFavorites){
+    //update the value in localStorage
+    //filter it and remove/delete recipe from favorites if it is alredy there
+      favorites = favorites.filter((fav) => fav.title !== recipe.title);
+      setIsFavorite(false)
+    }else {
+      //if recipe is NOT in the favorites, than push it to "favorites" array in local storage
+      favorites.push(recipe);
+      setIsFavorite(true);
+    }
+    //update the local storage
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
 
     return (
       // {/*  recipes */}
@@ -15,8 +36,14 @@ const  RecipeCard = ({recipe}) => {
          <div className="absolute bottom-2 left-2 bg-white rounded-full p-1 cursor-ponter flex items-center gap-1 text-sm">
            <Soup size={16} /> 4 Servings
          </div>
-         <div className="absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer">
-           <Heart size={20} className="hover:fill-red-500 hover:text-red-500"/>
+         <div className="absolute top-1 right-2 bg-white rounded-full p-1 cursor-pointer"
+             onClick={(e) => {
+              e.preventDefault();
+              addRecipeToFavorited();
+            }}
+         >
+           {!isFavorite && <Heart size={20} className="hover:fill-red-500 hover:text-red-500"/>}
+           { isFavorite && <Heart size={20} className="fill-red-500 text-red-500"/>}
          </div>
        </a>
        <div className="flex mt-1"><p className="font-bold tracking-wide">{title}</p></div>
