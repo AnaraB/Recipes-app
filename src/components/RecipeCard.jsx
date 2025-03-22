@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import {  Soup, Heart, HeartPulse} from "lucide-react";
+import {  Soup, ThumbsUp, Heart, HeartPulse} from "lucide-react";
 
-const  RecipeCard = () => {
+const  RecipeCard = ({recipe}) => {
+  const { id, image, title, likes } = recipe;
 
     return (
-
-      <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {/* 1st recipe */}
-      <div className="flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative">
-       <a href="#" className="relative h-32">
-         <img src="./1.jpg" alt="recipe img" className="rounded-md w-full object-cover cursor-pointer"/>
+      // {/*  recipes */}
+      <div key={id} className="flex flex-col rounded-md bg-[#ecf7d4] overflow-hidden p-3 relative">
+       <a 
+       href={`https://www.youtube.com/results?search_query=${recipe.title} recipe`}
+       target='_blank'
+       className="relative h-40">
+         <img src={image} alt="recipe img" className="rounded-md w-full h-full object-cover cursor-pointer"/>
          <div className="absolute bottom-2 left-2 bg-white rounded-full p-1 cursor-ponter flex items-center gap-1 text-sm">
            <Soup size={16} /> 4 Servings
          </div>
@@ -17,21 +19,18 @@ const  RecipeCard = () => {
            <Heart size={20} className="hover:fill-red-500 hover:text-red-500"/>
          </div>
        </a>
-       <div className="flex mt-1"><p className="font-bold tracking-wide">Roasted Chicken</p></div>
-       <p className="my-2">Turkish Kitchen</p>
-       <div className="flex gap-2 mt-auto">
-         <div className="flex gap-1 bg-[#d6f497] items-center p-1 rounded-md" >
-           <HeartPulse size={16} />
-           <span className="text-sm tracking-tighter font-semibold">Gluten Free</span>
-         </div>
+       <div className="flex mt-1"><p className="font-bold tracking-wide">{title}</p></div>
+       <div className="flex gap-2 mt-auto pt-1">
+          <div className="flex gap-1 bg-[#d6f497] items-center p-1 rounded-md" >
+           <ThumbsUp size={16} />
+           <span className="text-sm tracking-tighter font-semibold">{likes}</span>
+         </div> 
          <div className="flex gap-1 bg-[#d6f497] items-center p-1 rounded-md" >
            <HeartPulse size={16} />
            <span className="text-sm tracking-tighter font-semibold">Heart-healthy</span>
          </div>
-
        </div>
       </div>
-     </div>
     )
   }
 
