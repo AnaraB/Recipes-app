@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Search, Soup, Heart, HeartPulse} from "lucide-react";
+import {  Soup, Heart, HeartPulse} from "lucide-react";
 
 const  RecipeCard = () => {
 

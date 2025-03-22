@@ -1,11 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
+import RecipeCard from '../components/RecipeCard';
 
-export class Favoritepage extends Component {
-  render() {
+const Favoritepage = () => {
+  const fav = false;
+
     return (
-      <div>Favoritepage</div>
+      <div className="bg-[#faf9fb] flex-1 p-10 min-h-screen">
+        <div className='max-w-screen-lg mx-auto'>
+          <p className='font-bold text-3xl md-text-5xl my-4'>My favorites</p>
+          {!fav && (
+            <div className='h-[80vh] flex-col items-center gap-4'>
+              <img src="/404.svg" className="h-3/4" alt="page is not found"/>
+            </div>
+          )}
+             {fav && (
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                <RecipeCard />
+                <RecipeCard />
+                <RecipeCard />
+              </div>
+             )}
+
+        </div>
+      </div>
     )
-  }
+  
 }
 
 export default Favoritepage
