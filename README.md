@@ -43,3 +43,11 @@ YouTube Integration: Clicking on a recipe redirects the user to YouTube to find 
 ### Save Favorites
 * Click the heart icon on a recipe card to save it to your favorites.
 * Access your saved recipes under the "Favorites" page.
+
+## Screenshots 📸
+
+### Homepage
+![Homepage Screenshot](./public/Screenshot_29.png)
+
+## Deployed application
+https://recipes-r59mf5ytw-anaras-projects-d471e7cd.vercel.app/
