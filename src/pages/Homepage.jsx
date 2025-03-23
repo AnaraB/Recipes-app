@@ -4,9 +4,9 @@ import RecipeCard from "../components/RecipeCard";
 
 const Homepage = () => {
   // https://api.spoonacular.com/recipes/716429/information?apiKey=YOUR-API-KEY&includeNutrition=true.
-  //https://api.spoonacular.com/recipes/findByIngredients?apiKey=7f0da1e857ad4d3098e2fb7ac6a8ef2c&ingredients=chicken&number=10
+ 
+  const APP_KEY = import.meta.env.VITE_APP_KEY;
 
-  //const APP_KEY = import.meta.env.VITE_APP_KEY;
 
 
   const [recipes, setRecipes] = useState([]);
@@ -33,10 +33,15 @@ const Homepage = () => {
     fetchPecipes("carrot");
   }, []);
 
+  const handleSearchRecipes = (e) => {
+    e.preventDefault();
+    fetchPecipes(e.target[0].value)
+  }
+
   return (
     <div className="bg-[#faf9fb] p-10 flex-1">
       <div className="max-w-screen-lg mx-auto">
-        <form>
+        <form onSubmit={handleSearchRecipes} >
           <label className="input shadow-md flex items-center gap-2">
             <Search size={"24"} />
             <input
