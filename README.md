@@ -14,6 +14,16 @@ A responsive React application to search and explore recipes using the Spoonacul
 
 - Real-Time API Integration: Fetch recipes dynamically from the Spoonacular API.
 
+- YouTube Redirection: Clicking on a recipe redirects the user to YouTube for relevant video recipes.
+
+### Important Notes ⚠️
+
+API Rate Limits: The Spoonacular API has a daily request limit based on the plan.
+
+*** Free Tier Plan: Allows up to 150 requests per day. Once the limit is reached, the application will stop fetching new recipes until the next day.
+
+YouTube Integration: Clicking on a recipe redirects the user to YouTube to find relevant recipe videos.
+
 ## Tech Stack 🛠️
 
 - React: Frontend framework.
